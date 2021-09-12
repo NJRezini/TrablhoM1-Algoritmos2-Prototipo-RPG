@@ -1,4 +1,8 @@
-| Universidade do Vale do Itajaí Escola do Mar Ciência e TecnologiaNEI - EMCTDisciplina: Algoritmos e Programação IIProfessor: Rodrigo Lyra **Trabalho M1** |
+| Universidade do Vale do Itajaí Escola do Mar Ciência e TecnologiaNEI - EMCT |
+
+Disciplina: Algoritmos e Programação II
+
+Professor: Rodrigo Lyra
 
 **Protótipo de RPG – Structs e Templates**
 
