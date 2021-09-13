@@ -123,7 +123,8 @@ void jogarFase(Jogador protagonista, Fase fase) {
             inimigo = ataque<Jogador, Inimigo>(protagonista, inimigo);
             if (!morreu(inimigo)) {
                 protagonista = ataque<Inimigo, Jogador>(inimigo, protagonista);
-            } else {
+            }
+            else {
                 inimigosVivos--;
             }
             if (morreu(protagonista)) {
@@ -142,42 +143,38 @@ void jogarFase(Jogador protagonista, Fase fase) {
 template<typename T>
 T selecionarArma(T entidade, Arma armasDisponiveis[]) {
     int selecionar;
-    cout << "\nEscolha a sua arma: \tDano\tPrecisão \n[1] Machado\t\t\t\t12\t\t-2 \n[2] Adaga\t\t\t\t4\t\t+4 \n[3] Espada\t\t\t\t9\t\t+0 \n[4] Lança\t\t\t\t10\t\t-1 \n[5] Arco\t\t\t\t8\t\t+2\n";
+    cout << "\nEscolha a sua arma: \n \t\t\tDano\t\tPrecisao \n[1] Machado\t\t12\t\t-2 \n[2] Adaga\t\t4\t\t+4 \n[3] Espada\t\t9\t\t+0 \n[4] Lança\t\t10\t\t-1 \n[5] Arco\t\t8\t\t+2\n";
     cin >> selecionar;
     selecionar--;
     if (selecionar >= 1 && selecionar <= 5) {
         entidade.arma = armasDisponiveis[selecionar];
         cout << entidade.arma.nome << endl;
-    } else {
+    }
+    else {
         cout << "Opção inválida, escolha uma das armas disponíveis.";
     }
     return entidade;
 }
 
-void limparTela()
-{
-    for (int n = 0; n < 10; n++)
-        cout << "\n\n\n\n\n\n\n\n\n\n";
-}
 
 int main() {
 
     int menu;
 
     Arma machado = { "Machado", 1, 12, M, -2 },
-            adaga = { "Adaga", 1, 4, F, 4 },
-            espada = { "Espada", 1, 9, F, 0 },
-            lanca = { "Lança", 1, 10, F, -1 },
-            arco = { "Arco", 1, 8, M, 2 };
+        adaga = { "Adaga", 1, 4, F, 4 },
+        espada = { "Espada", 1, 9, F, 0 },
+        lanca = { "Lança", 1, 10, F, -1 },
+        arco = { "Arco", 1, 8, M, 2 };
 
     Arma armasDisponiveis[] = { machado, adaga, espada, lanca, arco };
 
     Jogador protagonista = { 1, 50, "Jogador", machado };
     Inimigo inimigo1 = { "Texugo", 10, adaga, 7 },
-            inimigo2 = { "Gosmanuel", 10, espada, 8 },
-            inimigo3 = { "Gosmarcos", 10, arco, 9 },
-            inimigo4 = { "Gosmarcelo", 10, lanca,10 },
-            inimigo5 = { "Ente Ancião", 20, machado, 11 };
+        inimigo2 = { "Gosmanuel", 10, espada, 8 },
+        inimigo3 = { "Gosmarcos", 10, arco, 9 },
+        inimigo4 = { "Gosmarcelo", 10, lanca,10 },
+        inimigo5 = { "Ente Ancião", 20, machado, 11 };
 
     Fase fase1 = { "Floresta do Desafio" };
     fase1.inimigos[0] = inimigo1;
@@ -189,22 +186,22 @@ int main() {
     srand(time(NULL));
 
     do {
-        limparTela();
+        system("CLS");
         cout << "Olá! Bem-vindo ao RPGenérico. Digite o número correspondente ao item do menu que você deseja acessar.\n\n[1] Jogar\n[2] Sobre o Jogo\n[3] Sair do Jogo\n";
         cin >> menu;
-        limparTela();
+        system("CLS");
         switch (menu) {
-            case 1:
-                protagonista = escolherNome(protagonista);
-                protagonista = selecionarArma(protagonista, armasDisponiveis);
-                jogarFase(protagonista, fase1);
-                break;
-            case 2:
-                cout << "Sobre o jogo.\n\nDesenvolvido por Nathan Rezini e Thomas Hammes.\nFeito em Setembro de 2021 como trabalho da disciplina de Algoritmos e Programação II do professor Rodrigo Lyra.\n\nAperte ENTER para retornar ao menu.";
-                getchar(); getchar();
-                break;
+        case 1:
+            protagonista = escolherNome(protagonista);
+            protagonista = selecionarArma(protagonista, armasDisponiveis);
+            jogarFase(protagonista, fase1);
+            break;
+        case 2:
+            cout << "Sobre o jogo.\n\nDesenvolvido por Nathan Rezini e Thomas Hammes.\nFeito em Setembro de 2021 como trabalho da disciplina de Algoritmos e Programação II do professor Rodrigo Lyra.\n\nAperte ENTER para retornar ao menu.";
+            getchar(); getchar();
+            break;
         }
-    } while ( menu != 3);
+    } while (menu != 3);
 
     return 0;
 }
