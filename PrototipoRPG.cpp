@@ -9,6 +9,12 @@ enum Genero {
     M
 };
 
+enum TipoBloco {
+    pedra,
+    caminho,
+    inimigo,
+};
+
 struct Arma {
     string nome;
     int danoMinimo;
@@ -40,6 +46,23 @@ struct Jogador {
 struct Acerto {
     bool sucesso;
     int resultado;
+};
+
+struct Bloco {
+    TipoBloco tipoBloco;
+    Inimigo* inimigo;
+};
+
+struct Mapa {
+    int altura;
+    int largura;
+};
+
+struct Fase {
+    string nome;
+    Mapa mapa;
+    int quantidadeInimigos;
+    Inimigo inimigos[];
 };
 
 template<typename T>
@@ -170,6 +193,7 @@ int main() {
     Arma armasDisponiveis[] = { machado, adaga, espada, lanca, arco };
 
     Jogador protagonista = { 1, 50, "Jogador", machado };
+
     Inimigo inimigo1 = { "Texugo", 10, adaga, 7 },
         inimigo2 = { "Gosmanuel", 10, espada, 8 },
         inimigo3 = { "Gosmarcos", 10, arco, 9 },
