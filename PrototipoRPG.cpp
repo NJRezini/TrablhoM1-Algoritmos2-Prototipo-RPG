@@ -179,6 +179,29 @@ T selecionarArma(T entidade, Arma armasDisponiveis[]) {
     return entidade;
 }
 
+int** criarMatriz(int tamanhoLinha, int tamanhoColuna) {
+    int** matriz = new int* [tamanhoLinha];
+    for (int i = 0; i < tamanhoLinha; i++) {
+        matriz[i] = new int [tamanhoColuna];
+
+        for (int j = 0; j < tamanhoColuna; j++) {
+            matriz[i][j] = 4;
+        }
+    }
+
+    return matriz;
+}
+
+void escreveMatriz(int** matriz, int tamanhoLinha, int tamanhoColuna) {
+    for (int i = 0; i < tamanhoLinha; i++) {
+        for (int j = 0; j < tamanhoColuna; j++) {
+            int* linha = matriz[i];
+            cout << linha[j] << "\t";
+        }
+        cout << endl;
+    }
+    cout << endl << endl;
+}
 
 int main() {
 
